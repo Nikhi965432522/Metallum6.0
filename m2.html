@@ -8,152 +8,218 @@
     <link rel="icon" href="40.jpg">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+     /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            height: 100vh;
-            color: white;
-            background: black;
-            overflow: hidden;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    color: white;
+    background: black;
+    overflow: hidden;
+}
 
-        /* Header Logo */
-        #logo img {
-            width: 150px;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 254, 254, 0.475);
-        }
+/* Header Logo */
+#logo img {
+    width: 150px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 254, 254, 0.475);
+}
 
-        /* Background Video */
-        .video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
+/* Background Video */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
 
-        .background-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        /* Main Content */
-        .bod {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
+/* Main Content */
+.bod {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 20px;
+}
 
-        .bod h1 {
-            font-size: 5em;
-            color: #00ffff;
-            background: rgba(244, 244, 244, 0.132);
+.bod h1 {
+    font-size: 5em;
+    color: #00ffff;
+    background: rgba(244, 244, 244, 0.132);
+}
 
-        }
+.bod p {
+    margin-top: 12px;
+    font-size: 3em;
+    color: #0c0808;
+    text-align: justify;
+    text-shadow: #8400ff;
+}
 
-        .bod p {
-         
-            margin-top: 12px;
-            font-size: 3em;
-            color: #0c0808;
-            text-align: justify;
-          text-shadow: #8400ff;
+/* Trigger Button */
+.trigger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #8d02ff;
+    outline: 0;
+    padding: 10px 20px;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.3em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    transition: 0.15s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px; /* Space between icon and text */
+}
 
-        }
+.trigger:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
 
-        /* Trigger Button */
-        .trigger {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #8d02ff;
-            outline: 0;
-            padding: 10px 20px;
-            color: #fff;
-            border: 0;
-            border-radius: 5px;
-            font-size: 1.3em;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-            transition: 0.15s ease-in-out;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            gap: 10px; /* Space between icon and text */
-        }
+.trigger i {
+    font-size: 1.5em;
+}
 
-        .trigger:hover {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-        }
+/* Full-Screen Navigation */
+.full-screen-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 10;
+}
 
-        .trigger i {
-            font-size: 1.5em;
-        }
+.open-nav {
+    display: flex;
+}
 
-        /* Full-Screen Navigation */
-        .full-screen-nav {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 10;
-        }
+.backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    cursor: pointer;
+    z-index: 1;
+}
 
-        .open-nav {
-            display: flex;
-        }
+ul {
+    list-style: none;
+    position: relative;
+    z-index: 2;
+}
 
-        .backdrop {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            cursor: pointer;
-            z-index: 1;
-        }
+ul li {
+    margin-bottom: 20px;
+}
 
-        ul {
-            list-style: none;
-            position: relative;
-            z-index: 2;
-        }
+ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.15s ease-in-out;
+}
 
-        ul li {
-            margin-bottom: 20px;
-        }
+ul li a:hover {
+    color: #8400ff;
+}
 
-        ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 2em;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: 0.15s ease-in-out;
-        }
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .bod h1 {
+        font-size: 3em;
+    }
 
-        ul li a:hover {
-            color: #8400ff;
-        }
+    .bod p {
+        font-size: 1.5em;
+    }
+
+    .trigger {
+        font-size: 1.1em;
+        padding: 8px 16px;
+    }
+
+    .background-video {
+        object-fit: cover;
+    }
+
+    /* Full-Screen Navigation */
+    ul li a {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .bod h1 {
+        font-size: 2.5em;
+    }
+
+    .bod p {
+        font-size: 1.2em;
+    }
+
+    .trigger {
+        font-size: 1em;
+        padding: 8px 12px;
+    }
+
+    ul li a {
+        font-size: 1.2em;
+    }
+
+    #logo img {
+        width: 120px; /* Adjust logo size for smaller screens */
+    }
+}
+
+@media (max-width: 320px) {
+    .bod h1 {
+        font-size: 2em;
+    }
+
+    .bod p {
+        font-size: 1.1em;
+    }
+
+    .trigger {
+        font-size: 0.9em;
+        padding: 6px 10px;
+    }
+
+    ul li a {
+        font-size: 1.1em;
+    }
+}
+
     </style>
 </head>
 
