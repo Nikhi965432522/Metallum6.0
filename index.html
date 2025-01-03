@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metallum 6.O | IIEST SHIBPUR</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="icon" href="40.jpg">
+</head>
+<body>
+    <video id="myVideo" autoplay muted class="background-video">
+        <source src="3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        // Select the video element
+        const video = document.getElementById('myVideo');
+        
+        // Check for the 'ended' event
+        video.addEventListener('ended', function() {
+            // Redirect to another page
+            console.log('Video ended, redirecting...');
+            window.location.href = 'm2.html'; // Replace with your target URL
+        });
+
+        // Debugging: Check if the video event is firing
+        video.addEventListener('play', function() {
+            console.log('Video is playing...');
+        });
+    </script>
+</body>
+</html>

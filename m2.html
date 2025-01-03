@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metallum 6.O | IIEST SHIBPUR</title>
+    <link rel="icon" href="40.jpg">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            color: white;
+            background: black;
+            overflow: hidden;
+        }
+
+        /* Header Logo */
+        #logo img {
+            width: 150px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 254, 254, 0.475);
+        }
+
+        /* Background Video */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .background-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Main Content */
+        .bod {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .bod h1 {
+            font-size: 5em;
+            color: #00ffff;
+            background: rgba(244, 244, 244, 0.132);
+
+        }
+
+        .bod p {
+         
+            margin-top: 12px;
+            font-size: 3em;
+            color: #0c0808;
+            text-align: justify;
+          text-shadow: #8400ff;
+
+        }
+
+        /* Trigger Button */
+        .trigger {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #8d02ff;
+            outline: 0;
+            padding: 10px 20px;
+            color: #fff;
+            border: 0;
+            border-radius: 5px;
+            font-size: 1.3em;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+            transition: 0.15s ease-in-out;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            gap: 10px; /* Space between icon and text */
+        }
+
+        .trigger:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .trigger i {
+            font-size: 1.5em;
+        }
+
+        /* Full-Screen Navigation */
+        .full-screen-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 10;
+        }
+
+        .open-nav {
+            display: flex;
+        }
+
+        .backdrop {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        ul {
+            list-style: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        ul li {
+            margin-bottom: 20px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.15s ease-in-out;
+        }
+
+        ul li a:hover {
+            color: #8400ff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <span id="logo">
+            <img src="logo.png" alt="Metallum Logo">
+        </span>
+    </header>
+
+    <!-- Background Video -->
+    <div class="video-container">
+        <video class="background-video" autoplay muted loop>
+            <source src="background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Main Content -->
+    <div class="bod">
+        <h1>Metallum 6.O</h1>
+        <p><b>Metallum</b> is the annual symposium cum tech fest organized by the Society of Student Metallurgists at IIEST, Shibpur.</p>
+    </div>
+
+    <!-- Full-Screen Navigation -->
+    <nav class="full-screen-nav">
+        <div class="backdrop"></div>
+        <ul>
+            <li><a href="http://127.0.0.1:5501/m2.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="http://127.0.0.1:5501/about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="http://127.0.0.1:5501/events.html"><i class="fas fa-calendar"></i> Events</a></li>
+            <li><a href="http://127.0.0.1:5501/contact%20us.html"><i class="fas fa-phone"></i> Contact</a></li>
+            <li><a href="http://127.0.0.1:5501/sponsor.html"><i class="fas fa-handshake"></i> Sponsors</a></li>
+            <li><a href="http://127.0.0.1:5500/TEAM.html"><i class="fas fa-users"></i> Team</a></li>
+            <li><a href="http://127.0.0.1:5501/contact%20us.html"><i class="fas fa-map-marker-alt"></i> Reach Us</a></li>
+            <li><a href="http://127.0.0.1:5500/FAQ.HTML"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- Trigger Button -->
+    <button class="trigger">
+        <i class="fas fa-bars"></i> Menu
+    </button>
+
+    <script>
+        const trigger = document.querySelector('.trigger');
+        const nav = document.querySelector('.full-screen-nav');
+        const backdrop = document.querySelector('.backdrop');
+
+        // Open the navigation menu
+        trigger.addEventListener('click', () => {
+            nav.classList.add('open-nav');
+        });
+
+        // Close the navigation menu
+        backdrop.addEventListener('click', () => {
+            nav.classList.remove('open-nav');
+        });
+    </script>
+</body>
+
+</html>
