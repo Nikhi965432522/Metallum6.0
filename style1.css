@@ -1,33 +1,34 @@
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Container for video */
 .video-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Ensures no overflow on small screens */
+    overflow: hidden;
     z-index: -1;
 }
 
-
+/* Background video */
 .background-video {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: auto;
-    height: auto;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    z-index: -1; /* Ensures video stays behind the content */
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
+/* Media query for smaller aspect ratios */
 @media (max-aspect-ratio: 16/9) {
     .background-video {
         width: 100%;
@@ -35,9 +36,19 @@
     }
 }
 
+/* Media query for larger aspect ratios */
 @media (min-aspect-ratio: 16/9) {
     .background-video {
         width: auto;
         height: 100%;
+    }
+}
+
+/* Extra media query for very small screens (e.g., mobile devices) */
+@media (max-width: 480px) {
+    .background-video {
+        width: 100%;
+        height: 100%;
+        transform: none; /* Remove transform for better fit on very small screens */
     }
 }
